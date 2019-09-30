@@ -1,1 +1,31 @@
-<h1>lol</h1>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Flood Sensor Web Interface</h1>
+        <iframe src="https://api.thingspeak.com/channels/824825/charts/1?api_key=D2C6ZRLUY4RYOS2V&start=2019-08-14%2005:00:00&end=2019-08-15%2005:00:00&width=1600&step=true
+" frameborder="0" width="100%" height="340"></iframe>
+        <form action="">
+            Start Date:<br>
+            <input type="text" name="StartDate" value="start">
+            <br>
+            End Date:<br>
+            <input type="text" name="EndDate" value="end">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <script src="setDate.js"></script>
+    </body>
+</html>
