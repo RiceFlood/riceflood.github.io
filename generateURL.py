@@ -114,4 +114,4 @@ def generateURL(sensor, date, days_past):
 	url2 = url2 + "start=" + date + "%2005:00:00&end="+end_date + "%2005:00:00&width=1600&step=true&dynamic=true&update=5"
 	return url2
 
-print(generateURL('1','2019-08-14','2'))
+# print(generateURL('1','2019-08-14','2'))
