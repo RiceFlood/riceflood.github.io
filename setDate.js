@@ -20,7 +20,7 @@ function generateURL(sensorNum,startDate,endDate){
         "7": "4PAELGVIXKM0GMN8",
         "8": "H37G5UKC6OCK0NI4"
     }
-    return `https://api.thingspeak.com/channels/${channels[sensorNum]}/charts/1?api_key=${api[sensorNum]}&start=${startDate}%2005:00:00&end=${endDate}%2005:00:00&width=1600&step=true&dynamic=true&update=5`;
+    return `https://api.thingspeak.com/channels/${channels[sensorNum]}/charts/1?api_key=${api[sensorNum]}&start=${startDate}%2005:00:00&end=${endDate}%2005:00:00&width=1600&step=true`;
 }
 $("#refreshIframe").click(()=>{
     $('#iframeGraph').attr("src",generateURL($('#sensorNum').val(),$('#startDate').val(),$('#endDate').val()));
