@@ -23,5 +23,5 @@ function generateURL(sensorNum,startDate,endDate){
     return `https://api.thingspeak.com/channels/${channels[sensorNum]}/charts/1?api_key=${api[sensorNum]}&start=${startDate}%2005:00:00&end=${endDate}%2005:00:00&width=1600&step=true`;
 }
 $("#refreshIframe").click(()=>{
-    $('#iframeGraph').attr("src",generateURL($('#sensorNum').val(),$('#startDate').val(),$('#endDate').val()));
+    $('#iframeGraph').attr("src",generateURL("1",$('#startDate').val(),$('#endDate').val()));
 })

@@ -66,11 +66,13 @@
         maxWidth: 2000
     });
     marker.addListener("click", function(){
-        infoWindow.open(map,marker)
-    });
+    $('#iframeGraph').attr("src",generateURL("1",$('#startDate').val(),$('#endDate').val()));
+})
+    
   }
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8KWiKlnaUCKrKPg6nUh2QwALsIaNrm0k&callback=initMap"
     async defer></script>
+    <script src="setDate.js"></script>
   </body>
 </html>
