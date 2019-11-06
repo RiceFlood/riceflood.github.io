@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>Flood Sensor Web Interface</h1>
-        <iframe src="https://api.thingspeak.com/channels/824825/charts/1?api_key=D2C6ZRLUY4RYOS2V&start=2019-08-14%2005:00:00&end=2019-08-15%2005:00:00&width=1600&step=true
-" frameborder="0" width="100%" height="340" id="iframeGraph"></iframe>
-        <form id= "refreshIframe">
-            Sensor Number:<br>
-            <select id = "sensorNum" name="sensorNum">
-                <option value="1">Sensor 1</option>
-                <option value="2">Sensor 2</option>
-                <option value="3">Sensor 3</option>
-                <option value="4">Sensor 4</option>
-                <option value="5">Sensor 5</option>
-                <option value="6">Sensor 6</option>
-                <option value="7">Sensor 7</option>
-                <option value="8">Sensor 8</option>
-            </select>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+
+        height: 70%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="row">
+        <div class="col-10 ">
+          <iframe src="https://api.thingspeak.com/channels/824825/charts/1?api_key=D2C6ZRLUY4RYOS2V&start=2019-08-14%2005:00:00&end=2019-08-15%2005:00:00&width=1600&step=true
+" frameborder="0" width="100%" height="250" id="iframeGraph"></iframe>
+        </div>
+        <div class="col-2">
+          <form id= "refreshIframe">
             <br>
             Start Date:<br>
             <input type="text" ID="startDate" placeholder="YYYY-MM-DD">
@@ -35,9 +37,42 @@
             <input type="text" ID="endDate" placeholder="YYYY-MM-DD">
             <br><br>
             <button type='button' id= "refreshIframe">submit</button> 
-        </form>
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"></script>
-        <script src="setDate.js"></script>
-    </body>
+          </form>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 29.718433, lng: -95.400461},
+      zoom: 17
+    });
+
+    var marker = new google.maps.Marker({
+        position: {lat:29.720798,lng:-95.401524},
+        map: map,
+        title: 'Sensor 1',
+        icon: ""
+    });
+
+    var graph = '<iframe src="https://api.thingspeak.com/channels/824825/charts/1?api_key=D2C6ZRLUY4RYOS2V&start=2019-08-14%2005:00:00&end=2019-08-15%2005:00:00&width=1600&step=true" frameborder="0" width="100%" height="340" id="iframeGraph"></iframe>'
+    var infoWindow = new google.maps.InfoWindow({
+        content:graph,
+        maxWidth: 2000
+    });
+    marker.addListener("click", function(){
+    $('#iframeGraph').attr("src",generateURL("1",$('#startDate').val(),$('#endDate').val()));
+})
+    
+  }
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8KWiKlnaUCKrKPg6nUh2QwALsIaNrm0k&callback=initMap"
+    async defer></script>
+    <script src="setDate.js"></script>
+  </body>
 </html>
