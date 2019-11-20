@@ -60,6 +60,25 @@
         icon: ""
     });
 
+    var marker = new google.maps.Marker({
+        position: {lat:29.716290,lng:-95.404386},
+        map: map,
+        title: 'Sensor 2',
+        icon: ""
+    });
+
+    var marker = new google.maps.Marker({
+        position: {lat:29.719102,lng:-95.397496},
+        map: map,
+        title: 'Sensor 3',
+        icon: ""
+    });
+    var marker = new google.maps.Marker({
+        position: {lat:29.719203,lng:-95.400849},
+        map: map,
+        title: 'Sensor 4',
+        icon: ""
+    });
     var graph = '<iframe src="https://api.thingspeak.com/channels/824825/charts/1?api_key=D2C6ZRLUY4RYOS2V&start=2019-08-14%2005:00:00&end=2019-08-15%2005:00:00&width=1600&step=true" frameborder="0" width="100%" height="340" id="iframeGraph"></iframe>'
     var infoWindow = new google.maps.InfoWindow({
         content:graph,
